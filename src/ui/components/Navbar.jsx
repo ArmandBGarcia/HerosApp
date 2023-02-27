@@ -1,7 +1,12 @@
+import { useContext } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../auth/context/AuthContext";
 // import styles from "../../ui/components/Navbar.module.css";
 
 export const Navbar = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+
   //useNavigate es un custom hook de react-router, basicamente sirve para programar un direccionamiento
   const navigate = useNavigate();
 
@@ -61,7 +66,7 @@ export const Navbar = () => {
         <ul className="navbar-nav ml-auto">
           {/* <input type="checkbox" className={styles.toggle} />
           <label for="toggle" className={styles.button}></label> */}
-          <span className="nav-item nav-link text-primary">Armando</span>
+          <span className="nav-item nav-link text-primary">{user?.name}</span>
           <button className="nav-item nav-link btn" onClick={onLogout}>
             Logout
           </button>

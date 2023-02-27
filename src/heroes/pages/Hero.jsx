@@ -5,6 +5,8 @@ import { getHeroById } from "../helpers/getHeroById";
 
 export const Hero = () => {
   const { id } = useParams();
+  console.log("params", id);
+  console.log(useParams());
   //useMemo va a disparar el callback cada vez que sus dependencias cambien
   const hero = useMemo(() => getHeroById(id), [id]);
   const navigate = useNavigate();
